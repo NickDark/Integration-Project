@@ -37,9 +37,15 @@ public class Main extends Todo {
       else if (value.equalsIgnoreCase("remove")) {
         System.out.println("What would you like to remove from the list? Just input the" +
         " list number.");
-        listNumber = input.nextInt();
+        value = input.next();
         input.nextLine();
-        newList.remItem(listNumber);
+        listNumber = Integer.parseInt(value);
+        if (listNumber <= newList.getSize() && listNumber > 0){
+          newList.remItem(listNumber);
+        }
+        else {
+          System.out.println("That number is not contained within the list.");
+        }
         System.out.println();
       }
       else if (value.equalsIgnoreCase("exit")) {

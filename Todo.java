@@ -1,6 +1,7 @@
+import java.util.ArrayList;
+
 public class Todo {
   private ArrayList<String> list = new ArrayList<String>();
-  private String item;
 
   //Display menu and navigation controls
   public void display() {
@@ -22,5 +23,9 @@ public class Todo {
   //remove an item from the list
   public void remItem (int itemNumber) {
     list.remove(itemNumber-1);
+  }
+
+  public int getSize(){
+    return list.size();
   }
 }
