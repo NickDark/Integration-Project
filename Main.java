@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 public class Main extends Todo {
   public static void main(String args []) {
-    boolean exit = false;
+    boolean exit = false; //controls whether the program ends or continues according to user input
     // boolean goBack; //return to previous menu
     Todo newList = new Todo();
-    Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in); //object that will read user input and possibly parse it
     String value; //stores user input
-    int listNumber;
+    int listNumber; //holds the index of the item on the list and starts from 1.
 
     System.out.println("Welcome to The Most User-Friendly Terminal TODO App!\n");
 
@@ -22,12 +22,17 @@ public class Main extends Todo {
     while (exit == false) {
       System.out.println("What would you like to do? (say 'add', 'remove','display', or 'exit')");
       value = input.nextLine();
+        
+      //calls the Todo class' display method to display the current list; "display" is an argument for the equalsIgnoreCase method of the String class
       if (value.equalsIgnoreCase("display")) {
         newList.display();
         System.out.println();
       }
+      
+      //calls the Todo class' add method to add an item to the list
       else if (value.equalsIgnoreCase("add")) {
         System.out.println("What would you like to add to the list?");
+        //store input and format it to look consistent
         value = input.nextLine();
         value = value.trim();
         value = value.substring(0,1).toUpperCase() + value.substring(1);
@@ -39,8 +44,8 @@ public class Main extends Todo {
         " list number.");
         value = input.next();
         input.nextLine();
-        listNumber = Integer.parseInt(value);
-        if (listNumber <= newList.getSize() && listNumber > 0){
+        listNumber = (Double) value;
+        if (listNumber <= newList.getSize() && listNumber > 0) {
           newList.remItem(listNumber);
         }
         else {

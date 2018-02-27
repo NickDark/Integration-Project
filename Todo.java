@@ -24,7 +24,8 @@ public class Todo {
   public void remItem (int itemNumber) {
     list.remove(itemNumber-1);
   }
-
+  
+  // return # of items in the list
   public int getSize(){
     return list.size();
   }
