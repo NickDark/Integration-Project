@@ -5,14 +5,15 @@ import java.util.Scanner;
 // Integration Project COP 2006
 
 // A basic user-friendly terminal Todo app that incorporates everything I'm
-// learning in my class. BEHOLD, it will be amazing by the end of the semester!
+// learning in my class.
 
 public class Main extends Todo {
   public static void main(String args []) {
     boolean exit = false; //controls whether the program ends or continues according to user input
     // boolean goBack; //return to previous menu
     Todo newList = new Todo();
-    Scanner input = new Scanner(System.in); //object that will read user input and possibly parse it
+    Calculator calculator = new Calculator();
+    Scanner input = new Scanner(System.in); //object that will read user input
     String value; //stores user input
     int listNumber; //holds the index of the item on the list and starts from 1.
 
@@ -20,7 +21,7 @@ public class Main extends Todo {
 
     //loop through program and respond to input
     while (exit == false) {
-      System.out.println("What would you like to do? (say 'add', 'remove','display', or 'exit')");
+      System.out.println("What would you like to do? (say 'add', 'remove','display','exit', or 'calculator')");
       value = input.nextLine();
         
       //calls the Todo class' display method to display the current list; "display" is an argument for the equalsIgnoreCase method of the String class
@@ -42,9 +43,9 @@ public class Main extends Todo {
       else if (value.equalsIgnoreCase("remove")) {
         System.out.println("What would you like to remove from the list? Just input the" +
         " list number.");
-        value = input.next();
+        value = "" + input.nextInt();
         input.nextLine();
-        listNumber = (Double) value;
+        listNumber = Integer.parseInt(value);
         if (listNumber <= newList.getSize() && listNumber > 0) {
           newList.remItem(listNumber);
         }
@@ -55,6 +56,9 @@ public class Main extends Todo {
       }
       else if (value.equalsIgnoreCase("exit")) {
         exit = true;
+      }
+      else if (value.equalsIgnoreCase("calculator")) {
+        calculator.calculate(input.nextLine());
       }
       else {
         System.out.println("Sorry, I didn't understand your input. Please try again.\n");
